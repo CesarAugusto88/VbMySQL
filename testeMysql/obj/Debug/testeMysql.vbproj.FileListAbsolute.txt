@@ -1,0 +1,10 @@
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\bin\Debug\testeMysql.exe.config
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\obj\Debug\testeMysql.vbproj.GenerateResource.Cache
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\bin\Debug\testeMysql.exe
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\bin\Debug\testeMysql.pdb
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\bin\Debug\testeMysql.xml
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\obj\Debug\testeMysql.exe
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\obj\Debug\testeMysql.xml
+C:\Users\DevSys\Documents\Visual Studio 2012\Projects\testeMysql\testeMysql\obj\Debug\testeMysql.pdb
