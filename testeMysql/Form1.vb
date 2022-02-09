@@ -2,11 +2,14 @@
 
 Public Class Form1
 
+    Public id As Integer = 0
+
+    ' Botão pare teste de conexão no banco gstec
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Try
             Using conexao = New MySqlConnection("server=localhost;port=3306;database=gstec;uid=root;password='1234' ")
                 conexao.Open()
-                Label1.Text = "HELLO WORLD! CONEXÃO BEM SUCEDIDA BANCO GSTEC"         
+                Label1.Text = "HELLO WORLD! CONEXÃO ESTABELECIDA COM SUCESSO. BANCO GSTEC"
             End Using
         Catch ex As Exception
             MsgBox("Falha na conexão: " + ex.Message)
@@ -111,5 +114,66 @@ Public Class Form1
         If DataGridView1.RowCount > 0 Then
             ConfigurarGrade()
         End If
+    End Sub
+
+
+
+
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles AdicionarToolStripButton1.Click
+
+    End Sub
+
+    Private Sub DataGridView1_CellEnter(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellEnter
+        MostrarLivro()
+        If id <> CLng(0 & TxtID.Text) Then
+            DataGridView2.DataSource = MostrarAssunto(CLng(0 & TxtID.Text))
+            ConfigurarGradeAssuntos()
+            id = CLng(0 & TxtID.Text)
+        End If
+            
+    End Sub
+
+    Private Sub ConfigurarGradeAssuntos()
+        With DataGridView2
+            .DefaultCellStyle.Font = New Font("Arial", 9)
+            .RowHeadersWidth = 25
+
+            .Columns("id_livro").Visible = False
+
+            .Columns("id_assunto").HeaderText = "ID"
+            .Columns("id_assunto").Width = 60
+            .Columns("id_assunto").HeaderCell.Style.Alignment =
+                DataGridViewContentAlignment.MiddleCenter
+            .Columns("id_assunto").DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter
+
+            .Columns("assunto").HeaderText = "Assunto (Tema)"
+            .Columns("assunto").Width = 300
+
+        End With
+    End Sub
+
+    Private Function MostrarAssunto(id As Integer) As DataTable
+        Dim dt As New DataTable
+        Dim sql = "select a.id_livro, a.id_assunto, b.assunto from livro_assunto a inner join assuntos b on a.id_assunto = b.id where a.id_livro = " & id
+
+        Using conexao = New MySqlConnection("server=localhost;port=3306;database=livros;uid=root;password='1234' ")
+            conexao.Open()
+            Using da = New MySqlDataAdapter(sql, conexao)
+                da.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
+
+    Private Sub MostrarLivro()
+        With DataGridView1
+            TxtID.Text = .Rows(.CurrentCell.RowIndex).Cells("id").Value
+            TxtISBN.Text = .Rows(.CurrentCell.RowIndex).Cells("isbn").Value
+            TxtTitulo.Text = .Rows(.CurrentCell.RowIndex).Cells("titulo").Value
+            TxtAutores.Text = .Rows(.CurrentCell.RowIndex).Cells("autores").Value
+            TxtUnitario.Text = .Rows(.CurrentCell.RowIndex).Cells("unitario").Value
+
+        End With
     End Sub
 End Class
